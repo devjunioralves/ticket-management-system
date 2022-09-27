@@ -1,3 +1,4 @@
+import { MissingParamError } from '../../errors/missing-param-error'
 import { CreateTicketController } from './create-ticket'
 
 const makeSut = (): CreateTicketController => {
@@ -18,5 +19,6 @@ describe('Create Ticket Controller', () => {
 
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(400)
+    expect(httpResponse.body).toEqual(new MissingParamError('institution'))
   })
 })
