@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "test": "jest",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:staged": "jest",
+    "test:staged": "npm test -- --watch -c jest-unit-config.js",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },

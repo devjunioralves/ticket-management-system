@@ -17,9 +17,10 @@
 
   "overrides": [],
   "rules": {
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": 0,
     "@typescript-eslint/no-var-requires": 0,
     "prettier/prettier": "error",
-    "semi": "off"
+    "semi": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
