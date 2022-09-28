@@ -1,6 +1,7 @@
 import { TicketModel } from '../../../domain/models/ticket'
 import { AddTicket, AddTicketModel } from '../../../domain/usecases/add-ticket'
 import { MissingParamError } from '../../errors/missing-param-error'
+import { ServerError } from '../../errors/server-error'
 import { CreateTicketController } from './create-ticket'
 
 const makeAddTicket = (): AddTicket => {
@@ -71,5 +72,25 @@ describe('Create Ticket Controller', () => {
       category: 'any_category',
       institution: 'any_institution',
     })
+  })
+
+  it('should return 500 if addTicket throws', async () => {
+    const { sut, addTicketStub } = makeSut()
+    jest.spyOn(addTicketStub, 'add').mockImplementationOnce(async () => {
+      return await new Promise((resolve, reject) => reject(new Error()))
+    })
+    const httpRequest = {
+      body: {
+        title: 'any_title',
+        description: 'any_description',
+        price: 55.0,
+        category: 'any_category',
+        institution: 'any_institution',
+      },
+    }
+
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError(null!))
   })
 })
