@@ -1,6 +1,6 @@
 import { AddTicket } from '../../../domain/usecases/add-ticket'
 import { MissingParamError } from '../../errors/missing-param-error'
-import { badRequest, serverError } from '../../helpers/http-helper'
+import { badRequest, ok, serverError } from '../../helpers/http-helper'
 import { HttpRequest, HttpResponse } from '../../protocols/http'
 
 export class CreateTicketController {
@@ -21,7 +21,7 @@ export class CreateTicketController {
       const ticket = await this.addTicket.add({
         ...httpRequest.body,
       })
-      return new Promise((resolve) => resolve({ statusCode: 200, body: {} }))
+      return ok(ticket)
     } catch (error) {
       return serverError(error)
     }
