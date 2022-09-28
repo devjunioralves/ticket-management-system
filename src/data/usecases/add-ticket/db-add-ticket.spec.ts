@@ -54,4 +54,38 @@ describe('DbAddTicket UseCase', () => {
       institution: 'valid_institution',
     })
   })
+
+  it('should throw if addTicketRepository throws', async () => {
+    const { sut, addTicketRepositoryStub } = makeSut()
+    jest
+      .spyOn(addTicketRepositoryStub, 'add')
+      .mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const promise = sut.add({
+      title: 'valid_title',
+      description: 'valid_description',
+      price: 55.0,
+      category: 'valid_category',
+      institution: 'valid_institution',
+    })
+    await expect(promise).rejects.toThrow()
+  })
+
+  it('should return an ticket on success', async () => {
+    const { sut } = makeSut()
+    const ticket = await sut.add({
+      title: 'valid_title',
+      description: 'valid_description',
+      price: 55.0,
+      category: 'valid_category',
+      institution: 'valid_institution',
+    })
+    expect(ticket).toEqual({
+      id: 'valid_id',
+      title: 'valid_title',
+      description: 'valid_description',
+      price: 55.0,
+      category: 'valid_category',
+      institution: 'valid_institution',
+    })
+  })
 })
