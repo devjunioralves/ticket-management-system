@@ -21,6 +21,7 @@
     "@typescript-eslint/no-var-requires": 0,
     "prettier/prettier": "error",
     "semi": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": 0
   }
 }
