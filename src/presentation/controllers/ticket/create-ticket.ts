@@ -12,6 +12,7 @@ export class CreateTicketController implements Controller {
   }
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
+      const { title, description, price, category, institution } = httpRequest.body
       const requiredFields = ['title', 'description', 'price', 'category', 'institution']
 
       for (const field of requiredFields) {
@@ -20,7 +21,11 @@ export class CreateTicketController implements Controller {
         }
       }
       const ticket = await this.addTicket.add({
-        ...httpRequest.body,
+        title,
+        description,
+        price,
+        category,
+        institution,
       })
       return ok(ticket)
     } catch (error) {
