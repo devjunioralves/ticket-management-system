@@ -25,6 +25,15 @@ interface SutTypes {
   sut: CreateTicketController
   addTicketStub: AddTicket
 }
+const makeFakeTicket = (): TicketModel => ({
+  id: 'valid_id',
+  title: 'valid_title',
+  description: 'valid_description',
+  price: 55.0,
+  category: 'valid_category',
+  institution: 'valid_institution',
+})
+
 const makeSut = (): SutTypes => {
   const addTicketStub = makeAddTicket()
   const sut = new CreateTicketController(addTicketStub)
@@ -92,5 +101,21 @@ describe('Create Ticket Controller', () => {
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
     expect(httpResponse.body).toEqual(new ServerError(null!))
+  })
+
+  it('Should return 200 if an valid data is provided', async () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        title: 'any_title',
+        description: 'any_description',
+        price: 55.0,
+        category: 'any_category',
+        institution: 'any_institution',
+      },
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual(makeFakeTicket())
   })
 })
