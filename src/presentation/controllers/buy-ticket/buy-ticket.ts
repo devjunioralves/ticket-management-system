@@ -1,6 +1,6 @@
 import { BuyTicket } from '../../../domain/usecases/buy-ticket'
 import { MissingParamError } from '../../errors/missing-param-error'
-import { serverError } from '../../helpers/http-helper'
+import { ok, serverError } from '../../helpers/http-helper'
 import { Controller } from '../../protocols/controller'
 import { HttpRequest } from '../../protocols/http'
 
@@ -32,7 +32,8 @@ export class BuyTicketController implements Controller {
         }
       }
 
-      await this.buyTicket.buy({ ...httpRequest.body })
+      const buyTicket = await this.buyTicket.buy({ ...httpRequest.body })
+      return ok(buyTicket)
     } catch (error) {
       return serverError(error)
     }
