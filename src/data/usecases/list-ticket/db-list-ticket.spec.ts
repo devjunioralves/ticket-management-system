@@ -69,4 +69,45 @@ describe('DbListTickets useCases', () => {
       },
     ])
   })
+
+  it('should return all tickets when not passed filters', async () => {
+    const { sut, listTicketRepositoryStub } = makeSut()
+    jest.spyOn(listTicketRepositoryStub, 'list').mockResolvedValueOnce([
+      {
+        id: '123abc',
+        title: 'first_ticket',
+        description: 'valid_description',
+        price: 55.0,
+        category: 'valid_category',
+        institution: 'valid_institution',
+      },
+      {
+        id: 'valid_id',
+        title: 'valid_title',
+        description: 'valid_description',
+        price: 55.0,
+        category: 'valid_category',
+        institution: 'valid_institution',
+      },
+    ])
+    const ticket = await sut.list()
+    expect(ticket).toEqual([
+      {
+        id: '123abc',
+        title: 'first_ticket',
+        description: 'valid_description',
+        price: 55.0,
+        category: 'valid_category',
+        institution: 'valid_institution',
+      },
+      {
+        id: 'valid_id',
+        title: 'valid_title',
+        description: 'valid_description',
+        price: 55.0,
+        category: 'valid_category',
+        institution: 'valid_institution',
+      },
+    ])
+  })
 })
