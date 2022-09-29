@@ -54,4 +54,26 @@ describe('List Ticket Controller', () => {
       institution: 'any_institution',
     })
   })
+
+  it('should return 200 and data', async () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      query: {
+        title: 'any_title',
+        institution: 'any_institution',
+      },
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual([
+      {
+        id: 'any_id',
+        title: 'any_title',
+        description: 'any_description',
+        price: 55.0,
+        category: 'any_category',
+        institution: 'any_institution',
+      },
+    ])
+  })
 })
