@@ -81,4 +81,22 @@ describe('DbBuyTicket useCase', () => {
       total: 55.0,
     })
   })
+  it('should throw if BuyTicketRepository throws', async () => {
+    const { sut, buyTicketRepositoryStub } = makeSut()
+    jest
+      .spyOn(buyTicketRepositoryStub, 'buy')
+      .mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+    const buyTicketRequest = {
+      ticketId: 'valid_ticket_id',
+      customerName: 'valid_customer_name',
+      customerId: 'valid_customer_id',
+      customerEmail: 'valid_customer_email',
+      customerMobile: 'valid_customer_mobile',
+      customerDocument: 'valid_customer_document',
+      paymentType: 'valid_payment_type',
+      total: 55.0,
+    }
+    const promise = sut.buy(buyTicketRequest)
+    await expect(promise).rejects.toThrow()
+  })
 })
