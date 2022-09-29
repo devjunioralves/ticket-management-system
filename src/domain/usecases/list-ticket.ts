@@ -6,5 +6,5 @@ export interface ListTicketFilter {
 }
 
 export interface ListTicket {
-  list: (filters: ListTicketFilter) => Promise<TicketModel[]>
+  list: (filters?: ListTicketFilter) => Promise<TicketModel[]>
 }
