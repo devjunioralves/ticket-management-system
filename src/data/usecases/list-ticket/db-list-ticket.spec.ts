@@ -51,4 +51,22 @@ describe('DbListTickets useCases', () => {
       institution: 'valid_institution',
     })
   })
+
+  it('should return an ticket on success', async () => {
+    const { sut } = makeSut()
+    const ticket = await sut.list({
+      title: 'valid_title',
+      institution: 'valid_institution',
+    })
+    expect(ticket).toEqual([
+      {
+        id: 'valid_id',
+        title: 'valid_title',
+        description: 'valid_description',
+        price: 55.0,
+        category: 'valid_category',
+        institution: 'valid_institution',
+      },
+    ])
+  })
 })
