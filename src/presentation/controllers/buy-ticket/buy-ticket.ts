@@ -31,7 +31,6 @@ export class BuyTicketController implements Controller {
           }
         }
       }
-
       const buyTicket = await this.buyTicket.buy({ ...httpRequest.body })
       return ok(buyTicket)
     } catch (error) {
