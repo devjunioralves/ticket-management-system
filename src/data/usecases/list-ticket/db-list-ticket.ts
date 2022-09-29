@@ -7,7 +7,7 @@ export class DbListTicket implements ListTicket {
   constructor(listTicketRepository: ListTicketRepository) {
     this.ticketRepository = listTicketRepository
   }
-  async list(ticket: ListTicketFilter): Promise<TicketModel[]> {
+  async list(ticket?: ListTicketFilter): Promise<TicketModel[]> {
     return await this.ticketRepository.list(ticket)
   }
 }
