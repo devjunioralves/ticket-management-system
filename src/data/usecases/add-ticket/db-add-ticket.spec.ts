@@ -22,7 +22,7 @@ const makeAddTicketRepository = (): AddTicketRepository => {
 }
 
 interface SutTypes {
-  sut: DbAddTicket
+  sut: AddTicket
   addTicketRepositoryStub: AddTicketRepository
 }
 
