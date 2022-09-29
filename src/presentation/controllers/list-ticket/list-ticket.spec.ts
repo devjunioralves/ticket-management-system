@@ -76,4 +76,21 @@ describe('List Ticket Controller', () => {
       },
     ])
   })
+
+  it('should return 500 if listTicket throws', async () => {
+    const { sut, listTicketStub } = makeSut()
+    jest.spyOn(listTicketStub, 'list').mockImplementationOnce(async () => {
+      return await new Promise((resolve, reject) => reject(new Error()))
+    })
+    const httpRequest = {
+      query: {
+        title: 'any_title',
+        institution: 'any_institution',
+      },
+    }
+
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError(null!))
+  })
 })
