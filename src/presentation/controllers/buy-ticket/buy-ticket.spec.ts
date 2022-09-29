@@ -1,6 +1,7 @@
 import { BoughtTicketModel } from '../../../domain/models/bought-ticket'
 import { BuyTicket, BuyTicketModel } from '../../../domain/usecases/buy-ticket'
 import { MissingParamError } from '../../errors/missing-param-error'
+import { ServerError } from '../../errors/server-error'
 import { BuyTicketController } from './buy-ticket'
 
 const makeBuyTicket = (): BuyTicket => {
@@ -87,5 +88,29 @@ describe('BuyTicket Controller', () => {
       paymentType: 'any_payment_form',
       total: 55.0,
     })
+  })
+
+  it('should return 500 if buyTicket throws', async () => {
+    const { sut, buyTicketStub } = makeSut()
+    jest.spyOn(buyTicketStub, 'buy').mockImplementationOnce(async () => {
+      return await new Promise((resolve, reject) => reject(new Error()))
+    })
+
+    const httpRequest = {
+      body: {
+        ticketId: 'any_ticket_id',
+        customerName: 'any_customer_name',
+        customerId: 'any_customer_id',
+        customerEmail: 'any_user_email',
+        customerMobile: 'any_user_mobile',
+        customerDocument: 'any_user_document',
+        paymentType: 'any_payment_form',
+        total: 55.0,
+      },
+    }
+
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
   })
 })
