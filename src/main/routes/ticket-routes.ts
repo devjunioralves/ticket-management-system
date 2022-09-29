@@ -1,7 +1,9 @@
 import { Router } from 'express'
-import { makeTicketController } from '../factories/ticket'
+import { makeTicketController } from '../factories/add-ticket'
+import { makeListTicketController } from '../factories/list-ticket'
 import { adaptRoute } from '../adapters/express-routes-adapter'
 
 export default (router: Router): void => {
   router.post('/ticket', adaptRoute(makeTicketController()))
+  router.get('/ticket', adaptRoute(makeListTicketController()))
 }
