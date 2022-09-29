@@ -1,8 +1,11 @@
+import { BoughtTicketModel } from '../../../domain/models/bought-ticket'
+import { BuyTicketModel } from '../../../domain/usecases/buy-ticket'
+import { BuyTicketRepository } from '../../protocols/buy-ticket-repository'
 import { DbBuyTicket } from './db-buy-ticket'
 
-const makeBuyTicketsRepository = (): any => {
-  class BuyTicketRepositoryStub {
-    async buy(buyTicketRequest: any): Promise<any> {
+const makeBuyTicketsRepository = (): BuyTicketRepository => {
+  class BuyTicketRepositoryStub implements BuyTicketRepository {
+    async buy(buyTicketRequest: BuyTicketModel): Promise<BoughtTicketModel> {
       return new Promise((resolve) =>
         resolve({
           id: 'valid_id',
@@ -21,7 +24,12 @@ const makeBuyTicketsRepository = (): any => {
   return new BuyTicketRepositoryStub()
 }
 
-const makeSut = (): any => {
+interface SutTypes {
+  sut: DbBuyTicket
+  buyTicketRepositoryStub: BuyTicketRepository
+}
+
+const makeSut = (): SutTypes => {
   const buyTicketRepositoryStub = makeBuyTicketsRepository()
   const sut = new DbBuyTicket(buyTicketRepositoryStub)
   return {
