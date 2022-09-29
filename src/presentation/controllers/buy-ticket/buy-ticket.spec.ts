@@ -113,4 +113,34 @@ describe('BuyTicket Controller', () => {
     expect(httpResponse.statusCode).toBe(500)
     expect(httpResponse.body).toEqual(new ServerError())
   })
+
+  it('should return 200 if valid data is provided', async () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        ticketId: 'any_ticket_id',
+        customerName: 'any_customer_name',
+        customerId: 'any_customer_id',
+        customerEmail: 'any_user_email',
+        customerMobile: 'any_user_mobile',
+        customerDocument: 'any_user_document',
+        paymentType: 'any_payment_form',
+        total: 55.0,
+      },
+    }
+
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual({
+      id: 'any_id',
+      ticketId: 'any_ticket_id',
+      customerId: 'any_customer_id',
+      customerName: 'any_customer_name',
+      customerEmail: 'any_user_email',
+      customerMobile: 'any_user_mobile',
+      customerDocument: 'any_user_document',
+      paymentType: 'any_payment_form',
+      total: 55.0,
+    })
+  })
 })
