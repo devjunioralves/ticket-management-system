@@ -37,7 +37,6 @@ describe('Ticket Routes', () => {
       category: 'any_category',
       institution: 'any_institution',
     })
-    console.log(createTicket)
     await request(app)
       .get('/api/ticket')
       .expect(200)
