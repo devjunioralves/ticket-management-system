@@ -7,16 +7,21 @@
   "scripts": {
     "dev": "sucrase-node src/main/server.ts",
     "prepare": "husky install",
-    "test": "jest",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:staged": "npm test -- --watch -c jest-unit-config.js",
+    "test:integration": "npm test -- --watch -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "devDependencies": {
+    "@shelf/jest-mongodb": "^4.1.0",
     "@types/jest": "^29.0.0",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^18.7.14",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
@@ -28,6 +33,7 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "sucrase": "^3.27.0",
+    "supertest": "^6.2.4",
     "ts-jest": "^28.0.8",
     "ts-node-dev": "^2.0.0",
     "typescript": "*"
