@@ -30,7 +30,7 @@ describe('Ticket Routes', () => {
   })
 
   it('should return an tickets list', async () => {
-    const createTicket = await request(app).post('/api/ticket').send({
+    await request(app).post('/api/ticket').send({
       title: 'any_title',
       description: 'any_description',
       price: 55.0,
