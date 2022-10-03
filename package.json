@@ -35,6 +35,7 @@
   "dependencies": {
     "express": "^4.18.1",
     "fast-glob": "^3.2.12",
+    "joi": "^17.6.2",
     "mongodb": "^4.10.0"
   }
 }

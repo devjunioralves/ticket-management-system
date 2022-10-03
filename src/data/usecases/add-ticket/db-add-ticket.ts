@@ -4,9 +4,11 @@ import { AddTicketRepository } from '../../protocols/add-ticket-repository'
 
 export class DbAddTicket implements AddTicket {
   private readonly addTicketRepository: AddTicketRepository
+
   constructor(addTicketRepository: AddTicketRepository) {
     this.addTicketRepository = addTicketRepository
   }
+
   async add(ticket: AddTicketModel): Promise<TicketModel> {
     return await this.addTicketRepository.add(ticket)
   }
