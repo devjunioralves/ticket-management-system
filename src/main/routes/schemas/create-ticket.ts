@@ -7,5 +7,5 @@ export const createTicketSchema = Joi.object({
     description: Joi.string().required(),
     price: Joi.number().required(),
     category: Joi.string().required(),
-  }).required(),
+  }),
 })
