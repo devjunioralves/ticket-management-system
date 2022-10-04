@@ -1,8 +1,8 @@
-import { BoughtTicketModel } from '../../../domain/models/bought-ticket'
-import { BuyTicket, BuyTicketModel } from '../../../domain/usecases/buy-ticket'
-import { MissingParamError } from '../../errors/missing-param-error'
-import { ServerError } from '../../errors/server-error'
-import { BuyTicketController } from './buy-ticket'
+import { BoughtTicketModel } from '@domain/models/bought-ticket'
+import { BuyTicket, BuyTicketModel } from '@domain/usecases/buy-ticket'
+import { MissingParamError } from '@presentation/errors/missing-param-error'
+import { ServerError } from '@presentation/errors/server-error'
+import { BuyTicketController } from '@presentation/controllers/buy-ticket/buy-ticket'
 
 const makeBuyTicket = (): BuyTicket => {
   class BuyTicketStub implements BuyTicket {

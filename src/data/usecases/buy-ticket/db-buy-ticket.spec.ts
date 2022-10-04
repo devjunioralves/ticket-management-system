@@ -1,7 +1,7 @@
-import { BoughtTicketModel } from '../../../domain/models/bought-ticket'
-import { BuyTicketModel } from '../../../domain/usecases/buy-ticket'
-import { BuyTicketRepository } from '../../protocols/buy-ticket-repository'
-import { DbBuyTicket } from './db-buy-ticket'
+import { BoughtTicketModel } from '@domain/models/bought-ticket'
+import { BuyTicketModel } from '@domain/usecases/buy-ticket'
+import { BuyTicketRepository } from '@data/protocols/buy-ticket-repository'
+import { DbBuyTicket } from '@data/usecases/buy-ticket/db-buy-ticket'
 
 const makeBuyTicketsRepository = (): BuyTicketRepository => {
   class BuyTicketRepositoryStub implements BuyTicketRepository {

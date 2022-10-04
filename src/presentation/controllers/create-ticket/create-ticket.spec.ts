@@ -1,8 +1,8 @@
-import { TicketModel } from '../../../domain/models/ticket'
-import { AddTicket, AddTicketModel } from '../../../domain/usecases/add-ticket'
-import { MissingParamError } from '../../errors/missing-param-error'
-import { ServerError } from '../../errors/server-error'
-import { CreateTicketController } from './create-ticket'
+import { TicketModel } from '@domain/models/ticket'
+import { AddTicket, AddTicketModel } from '@domain/usecases/add-ticket'
+import { MissingParamError } from '@presentation/errors/missing-param-error'
+import { ServerError } from '@presentation/errors/server-error'
+import { CreateTicketController } from '@presentation/controllers/create-ticket/create-ticket'
 
 const makeAddTicket = (): AddTicket => {
   class AddTicketStub implements AddTicket {

@@ -1,7 +1,7 @@
-import { TicketModel } from '../../../domain/models/ticket'
-import { AddTicket, AddTicketModel } from '../../../domain/usecases/add-ticket'
-import { AddTicketRepository } from '../../protocols/add-ticket-repository'
-import { DbAddTicket } from './db-add-ticket'
+import { TicketModel } from '@domain/models/ticket'
+import { AddTicket, AddTicketModel } from '@domain/usecases/add-ticket'
+import { AddTicketRepository } from '@data/protocols/add-ticket-repository'
+import { DbAddTicket } from '@data/usecases/add-ticket/db-add-ticket'
 
 const makeAddTicketRepository = (): AddTicketRepository => {
   class AddTicketRepositoryStub implements AddTicketRepository {

@@ -1,5 +1,5 @@
-import { MongoHelper } from '../helpers/mongo-helper'
-import { BuyTicketMongoRepository } from './buy-ticket'
+import { MongoHelper } from '@infra/db/mongodb/helpers/mongo-helper'
+import { BuyTicketMongoRepository } from '@infra/db/mongodb/buy-ticket-repository/buy-ticket'
 import { ObjectId } from 'mongodb'
 
 describe('BuyTicket mongo repository', () => {

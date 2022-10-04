@@ -1,6 +1,6 @@
-import { TicketModel } from '../../../domain/models/ticket'
-import { ListTicket, ListTicketFilter } from '../../../domain/usecases/list-ticket'
-import { ListTicketRepository } from '../../protocols/list-ticket-repository'
+import { TicketModel } from '@domain/models/ticket'
+import { ListTicket, ListTicketFilter } from '@domain/usecases/list-ticket'
+import { ListTicketRepository } from '@data/protocols/list-ticket-repository'
 
 export class DbListTicket implements ListTicket {
   private readonly ticketRepository: ListTicketRepository

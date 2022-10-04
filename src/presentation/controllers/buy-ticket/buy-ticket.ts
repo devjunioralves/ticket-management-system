@@ -1,8 +1,8 @@
-import { BuyTicket } from '../../../domain/usecases/buy-ticket'
-import { MissingParamError } from '../../errors/missing-param-error'
-import { ok, serverError } from '../../helpers/http-helper'
-import { Controller } from '../../protocols/controller'
-import { HttpRequest } from '../../protocols/http'
+import { BuyTicket } from '@domain/usecases/buy-ticket'
+import { MissingParamError } from '@presentation/errors/missing-param-error'
+import { ok, serverError } from '@presentation/helpers/http-helper'
+import { Controller } from '@presentation/protocols/controller'
+import { HttpRequest } from '@presentation/protocols/http'
 
 export class BuyTicketController implements Controller {
   private readonly buyTicket: BuyTicket

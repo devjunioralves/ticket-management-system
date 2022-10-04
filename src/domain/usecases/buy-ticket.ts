@@ -1,4 +1,4 @@
-import { BoughtTicketModel } from '../models/bought-ticket'
+import { BoughtTicketModel } from '@domain/models/bought-ticket'
 
 export interface BuyTicketModel {
   ticketId: string

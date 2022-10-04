@@ -1,4 +1,4 @@
-import { TicketModel } from '../models/ticket'
+import { TicketModel } from '@domain/models/ticket'
 
 export interface AddTicketModel {
   title: string

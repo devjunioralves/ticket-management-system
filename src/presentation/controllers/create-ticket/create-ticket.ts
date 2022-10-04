@@ -1,8 +1,8 @@
-import { AddTicket } from '../../../domain/usecases/add-ticket'
-import { MissingParamError } from '../../errors/missing-param-error'
-import { badRequest, ok, serverError } from '../../helpers/http-helper'
-import { Controller } from '../../protocols/controller'
-import { HttpRequest, HttpResponse } from '../../protocols/http'
+import { AddTicket } from '@domain/usecases/add-ticket'
+import { MissingParamError } from '@presentation/errors/missing-param-error'
+import { badRequest, ok, serverError } from '@presentation/helpers/http-helper'
+import { Controller } from '@presentation/protocols/controller'
+import { HttpRequest, HttpResponse } from '@presentation/protocols/http'
 
 export class CreateTicketController implements Controller {
   private readonly addTicket: AddTicket

@@ -1,6 +1,6 @@
-import { BoughtTicketModel } from '../../../domain/models/bought-ticket'
-import { BuyTicket, BuyTicketModel } from '../../../domain/usecases/buy-ticket'
-import { BuyTicketRepository } from '../../protocols/buy-ticket-repository'
+import { BoughtTicketModel } from '@domain/models/bought-ticket'
+import { BuyTicket, BuyTicketModel } from '@domain/usecases/buy-ticket'
+import { BuyTicketRepository } from '@data/protocols/buy-ticket-repository'
 
 export class DbBuyTicket implements BuyTicket {
   private readonly buyTicketRepository: BuyTicketRepository

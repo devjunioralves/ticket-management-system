@@ -1,7 +1,7 @@
-import { ListTicket } from '../../../domain/usecases/list-ticket'
-import { ok, serverError } from '../../helpers/http-helper'
-import { Controller } from '../../protocols/controller'
-import { HttpRequest, HttpResponse } from '../../protocols/http'
+import { ListTicket } from '@domain/usecases/list-ticket'
+import { ok, serverError } from '@presentation/helpers/http-helper'
+import { Controller } from '@presentation/protocols/controller'
+import { HttpRequest, HttpResponse } from '@presentation/protocols/http'
 
 export class ListTicketController implements Controller {
   private readonly listTicket: ListTicket

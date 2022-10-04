@@ -1,7 +1,7 @@
-import { BuyTicketRepository } from '../../../../data/protocols/buy-ticket-repository'
-import { BoughtTicketModel } from '../../../../domain/models/bought-ticket'
-import { BuyTicketModel } from '../../../../domain/usecases/buy-ticket'
-import { MongoHelper } from '../helpers/mongo-helper'
+import { BuyTicketRepository } from '@data/protocols/buy-ticket-repository'
+import { BoughtTicketModel } from '@domain/models/bought-ticket'
+import { BuyTicketModel } from '@domain/usecases/buy-ticket'
+import { MongoHelper } from '@infra/db/mongodb/helpers/mongo-helper'
 import { ObjectId } from 'mongodb'
 
 export class BuyTicketMongoRepository implements BuyTicketRepository {

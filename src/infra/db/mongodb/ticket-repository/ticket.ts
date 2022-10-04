@@ -1,9 +1,9 @@
-import { AddTicketRepository } from '../../../../data/protocols/add-ticket-repository'
-import { ListTicketRepository } from '../../../../data/protocols/list-ticket-repository'
-import { TicketModel } from '../../../../domain/models/ticket'
-import { AddTicketModel } from '../../../../domain/usecases/add-ticket'
-import { ListTicketFilter } from '../../../../domain/usecases/list-ticket'
-import { MongoHelper } from '../helpers/mongo-helper'
+import { AddTicketRepository } from '@data/protocols/add-ticket-repository'
+import { ListTicketRepository } from '@data/protocols/list-ticket-repository'
+import { TicketModel } from '@domain/models/ticket'
+import { AddTicketModel } from '@domain/usecases/add-ticket'
+import { ListTicketFilter } from '@domain/usecases/list-ticket'
+import { MongoHelper } from '@infra/db/mongodb/helpers/mongo-helper'
 
 export class TicketMongoRepository implements AddTicketRepository, ListTicketRepository {
   async add(ticketData: AddTicketModel): Promise<TicketModel> {

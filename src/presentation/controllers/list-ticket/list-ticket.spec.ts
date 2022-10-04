@@ -1,7 +1,7 @@
-import { TicketModel } from '../../../domain/models/ticket'
-import { ListTicket, ListTicketFilter } from '../../../domain/usecases/list-ticket'
-import { ServerError } from '../../errors/server-error'
-import { ListTicketController } from './list-ticket'
+import { TicketModel } from '@domain/models/ticket'
+import { ListTicket, ListTicketFilter } from '@domain/usecases/list-ticket'
+import { ServerError } from '@presentation/errors/server-error'
+import { ListTicketController } from '@presentation/controllers/list-ticket/list-ticket'
 
 const makeListTicket = (): ListTicket => {
   class ListTicketStub implements ListTicket {
